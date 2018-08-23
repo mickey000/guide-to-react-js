@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beginner's Guide to React</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.3.1/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+
+        const state = { eventCount: 0, username: '' };
+        
+        const App = () => {
+            return (
+                <div>
+                    <p>
+                        There have been {state.eventCount} events
+                    </p>
+                    <p>
+                        <button onClick={increment}>+</button>
+                    </p>
+                    <p>
+                        You typed: {state.username}
+                    </p>
+                    <p>
+                        <input onChange={updateUsername} onBlur={viewEvent}/>
+                    </p>
+                </div>
+            );
+        };
+
+        const increment = () => setState({ eventCount: state.eventCount + 1 });
+        const updateUsername = event => setState({ username: event.target.value });
+        const viewEvent = event => {
+            console.log('React event: ', event);
+            console.log('Native event: ', event.nativeEvent);
+        };
+
+        const setState = newState => {
+            Object.assign(state, newState);
+            renderApp();
+        };
+
+        const renderApp = () => {
+            ReactDOM.render(
+                <App />,
+                document.getElementById('root')
+            );
+        };
+
+        renderApp();
+    </script>
+</body>
+</html>
