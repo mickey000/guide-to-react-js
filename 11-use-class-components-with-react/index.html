@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beginner's Guide to React</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.3.1/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.1/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+
+        // EXAMPLE
+
+        const Bob = {
+            name: 'Bob',
+            greet(name) {
+                console.log(`Hi ${name}, my name is ${ this ? this.name : '' }!`);
+            }
+        };
+
+        Bob.greet('Jane');  // Hi Jane, my name is Bob!
+
+        let greetFn = Bob.greet;
+        greetFn('Jane');    // Hi Jane, my name is !
+
+        greetFn = Bob.greet.bind(Bob);
+        greetFn('Jane');    // Hi Jane, my name is Bob!
+
+        // END OF EXAMPLE
+
+        class Counter extends React.Component {
+
+            constructor(...args) {
+                super(...args);
+                this.state = { count: 0 };
+            }
+
+            // Also you can use public class fields
+            // state = { count: 0 };
+
+            // 1. this.handleClick = this.handleClick.bind(this);
+            // 2. handleClick = function () {...}.bind(this);
+            handleClick = () => {
+                this.setState(({ count }) => ({ count: count + 1 }));
+            }
+
+            render() {
+                const { count } = this.state;
+
+                return (
+                    <button onClick={this.handleClick}>
+                        { count }
+                    </button>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Counter />,
+            document.getElementById('root')
+        );
+
+    </script>
+</body>
+</html>
