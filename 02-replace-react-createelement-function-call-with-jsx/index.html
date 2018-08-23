@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beginner's Guide to React</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.3.1/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById('root');
+
+        // const element = document.createElement('div');
+        // element.textContent = 'Hello World';
+        // element.className = 'container';
+        // rootElement.appendChild(element);
+
+        // const element = React.createElement('div', { className: 'container' }, 'Hello World'); 
+        
+        const myClassName = 'container';
+        const content = 'Hello World';
+
+        // const element = <div className={myClassName + '__hi-there'}>{content}</div>;
+
+        const props = {
+            className: myClassName,
+            children: content
+        };
+
+        const element = <div className="my-class" {...props}/>;
+
+        ReactDOM.render(element, rootElement);
+    </script>
+</body>
+</html>
