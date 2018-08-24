@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beginner's Guide to React</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.3.1/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.1/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            static lessons = [
+                '01-create-html-elements-with-react-s-createelement-api',
+                '02-replace-react-createelement-function-call-with-jsx',
+                '03-create-a-simple-reusable-react-component',
+                '04-validate-custom-react-component-props-with-proptypes',
+                '05-conditionally-render-a-react-component',
+                '06-rerender-a-react-application',
+                '07-style-react-components-with-classname-and-in-line-styles',
+                '08-use-event-handlers-with-react',
+                '09-use-component-state-with-react',
+                '10-stop-memory-leaks-with-componentwillunmount-lifecycle-method-in-react',
+                '11-use-class-components-with-react',
+                '12-manipulate-the-dom-with-react-refs',
+                '13-make-basic-forms-with-react',
+                '14-make-dynamic-forms-with-react',
+                '15-controlling-form-values-with-react',
+                '16-use-the-key-prop-when-rendering-a-list-with-react',
+                '17-make-http-requests-with-react',
+                '18-build-and-deploy-a-react-application'
+            ];
+
+            render() {
+                return (
+                    <div>
+                        Link to course: <a href="https://egghead.io/courses/the-beginner-s-guide-to-react">The Beginner's Guide to React</a>
+                        <br /><br />
+                        List of lessons:
+                        <ul>
+                        {
+                            App.lessons.map(lesson => (
+                                <li key={lesson}>
+                                    <a href={`./${lesson}/index.html`}>{lesson}</a>
+                                </li>
+                            ))
+                        }
+                        </ul>
+                    </div>
+                );
+            }
+        }
+
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+
+    </script>
+</body>
+</html>
